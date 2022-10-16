@@ -1,0 +1,48 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ServiceDetail>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_Layout.cshtml";
+}
+
+<section class="inner-banner" style="background-image: url(@Model.Value("mainImage")">
+    <div class="container">
+        <h1>@Model.Name</h1>
+    </div>
+</section>
+
+<section class="introduction service-detail-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-10 mx-auto">
+                <div class="info-panel text-center">
+                    <h1 class="text-primary">@Model.Value("heading")</h1>
+                    @Model.Value("description")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*===== Includes=====*@
+<section class="committed-panel">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="img-panel mb-3 mb-md-0">
+                    <img src="@Model.Value("includesImage")" alt="@Model.Name">
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+                <div class="info-panel">
+                    <h1 class="text-primary">@Model.Value("includesHeading")</h1>
+                    @Model.Value("includesDescription")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*===== Accreditations =====*@
+@await Umbraco.RenderMacroAsync("Accreditations")

@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+@{
+    var root = Model.Content.AncestorOrSelf(1);
+    var selection = Umbraco.ContentAtRoot().FirstOrDefault()
+        .Children()
+        .Where(x => x.IsVisible());
+}
+
+<header class="header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="@root.Url()">
+                    <img src="/media/ilxmyfxz/logo.png" alt="roofstiles" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link @(Model.Content.Url() == root.Url() ? "active" : null )" aria-current="page" href="@root.Url()">@root.Name()</a>
+                        </li>
+                        
+                        @foreach (var item in selection)
+                        {
+                            <li class="nav-item">
+                                <a href="@item.Url()" class="nav-link @(item.IsAncestorOrSelf(Model.Content) ? " active" : null)" >@item.Name()</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header> 

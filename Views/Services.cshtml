@@ -1,0 +1,45 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Services>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_Layout.cshtml";
+}
+
+<section class="inner-banner inner-banner-services" style="background-image: url(@Model.Value("mainImage")">
+    <div class="container">
+        <h1>@Model.Name</h1>
+    </div>
+</section>
+
+<section class="introduction">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-10 mx-auto">
+                <div class="info-panel text-center">
+                    <h1 class="text-primary">@Model.Value("Heading")</h1>
+                    @Model.Value("description")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*===== Services =====*@
+<section class="our-services">
+    <div class="container">
+        <div class="row">
+            @foreach (var item1 in Model.Children)
+            {
+                <div class="col-xl-3 col-lg-6 col-12 mb-4 mb-xl-0">
+                    <a class="services-details" href="@item1.Url()">
+                        <img src="@item1.Value("mainIcon")" alt="@item1.Name" />
+                        <h2 class="text-primary">@item1.Value("heading")</h2>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@*===== Accreditations =====*@
+@await Umbraco.RenderMacroAsync("Accreditations")

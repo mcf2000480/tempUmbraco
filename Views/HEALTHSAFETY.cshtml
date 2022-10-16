@@ -1,0 +1,61 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.HEalthsafety>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "_Layout.cshtml";
+}
+
+<section class="inner-banner hs-inner-banner" style="background-image: url(@Model.Value("mainImage")">
+    <div class="container">
+        <h1>@Model.Name</h1>
+    </div>
+</section>
+
+<section class="introduction">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="info-panel text-center">
+                    <h1 class="text-primary">@Model.Value("heading")</h1>
+                    @Model.Value("description")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="portfolio-section">
+    <div class="container">
+        <div class="row justify-content-center gx-4">
+            <div class="col-md-4">
+                <img src="@Model.Value("hsImage1")" alt="@Model.Value("hsImage1.Name")" />
+            </div>
+            <div class="col-md-4">
+                <img src="@Model.Value("hsImage2")" alt="@Model.Value("hsImage1.Name")" />
+            </div>
+            <div class="col-md-4">
+                <img src="@Model.Value("hsImage3")" alt="@Model.Value("hsImage1.Name")" />
+            </div>
+        </div>
+        <hr class="hs-separator" />
+    </div><!--container-->
+</section>
+
+                <section class="training-on-site">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-6 order-md-2 order-1">
+                <div class="img-panel">
+                    <img src="@Model.Value("trainingImage")" alt="@Model.Value("trainingImage.Name")">
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-6">
+                <div class="info-panel">
+                    <h1 class="text-primary">@Model.Value("trainingHeading")</h1>
+                    @Model.Value("trainingDescription")
+                </div>
+            </div>
+        </div>
+    </div><!--container-->
+</section>

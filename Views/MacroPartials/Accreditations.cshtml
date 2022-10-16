@@ -1,0 +1,35 @@
+﻿@inherits Umbraco.Cms.Web.Common.Macros.PartialViewMacroPage
+@{ 
+    var rootPage = Model.Content.AncestorOrSelf(1);
+    var accreditations = rootPage.Value<IEnumerable<IPublishedElement>>("accreditationsItem");
+}
+
+<section class="accreditations">
+    <div class="container">
+            <div class="col-md-12 col-lg-10 col-xl-8 mx-auto">
+                <div class="info-panel text-center">
+                    <h1 class="text-primary">@rootPage.Value("accreditationsHeading")</h1>
+                    @rootPage.Value("accreditationsDescription")
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="introduction">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in accreditations)
+            {
+                var image = item.Value<IPublishedContent>("itemImage");
+
+                <div class="col-lg-2 col-md-4 col-sm-3 col-6 mb-4">
+                    <div class="img-panel d-flex align-items-center h-100 justify-content-center">
+                        <img src="@image.Url()" alt="@image.Name" />
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
